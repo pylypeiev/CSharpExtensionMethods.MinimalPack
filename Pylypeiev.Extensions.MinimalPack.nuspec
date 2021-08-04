@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<package >
+  <metadata>
+    <id>Pylypeiev.Extensions.MinimalPack</id>
+    <version>1.0.0</version>
+    <authors>Yakov Pylypeiev</authors>
+    <owners>Yakov Pylypeiev</owners>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <license type="expression">MIT</license>
+    <projectUrl>https://github.com/pylypeiev/CSharpExtensionMethods.MinimalPack</projectUrl>
+    <description>C# Extension methods for collections and POCO objects. The minimal pack.</description>
+    <releaseNotes>Minimal pack nuget created.</releaseNotes>
+	<tags>Extension methods</tags>
+	<title>C# Extension methods</title>
+	<repository  type="git" url="https://github.com/pylypeiev/CSharpExtensionMethods.MinimalPack"/>
+    <copyright>Copyright 2021</copyright>
+    <dependencies>
+      <group targetFramework=".NETFramework4.5.1" />
+      <group targetFramework="netstandard2.0" />
+      <group targetFramework="net5.0" />
+    </dependencies>
+  </metadata>
+  <files>
+    <file src="Pylypeiev.Extensions.MinimalPack\bin\Release\net451\*.*" target="lib/net451" />
+    <file src="Pylypeiev.Extensions.MinimalPack\bin\Release\netstandard2.0\*.*" target="lib/netstandard2.0" />
+    <file src="Pylypeiev.Extensions.MinimalPack\bin\Release\net5.0\*.*" target="lib/net5.0" />
+  </files>
+</package>
