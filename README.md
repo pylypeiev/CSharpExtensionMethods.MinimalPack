@@ -1,6 +1,10 @@
-# C# Extension Methods
-# Minimal Pack
-My C# Extension methods for collections and POCO objects. Enjoy! :collision:
+<h1 align="center"> 
+C# Extension Methods
+</h1>
+<h2 align="center">
+Minimal Pack
+</h2>
+#My C# Extension methods for collections and POCO objects. Enjoy! :collision:
 
 ## [ NUGET ](https://www.nuget.org/packages/Pylypeiev.Extensions.MinimalPack)  :hammer: 
 [![NuGet version](https://badge.fury.io/nu/Pylypeiev.Extensions.MinimalPack.svg)](https://badge.fury.io/nu/Pylypeiev.Extensions.MinimalPack)
