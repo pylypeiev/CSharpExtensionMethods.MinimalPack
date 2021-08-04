@@ -3,7 +3,10 @@
 My C# Extension methods for collections and POCO objects. Enjoy! :collision:
 
 ## [ NUGET ](https://www.nuget.org/packages/Pylypeiev.Extensions.MinimalPack)  :hammer: 
+[![NuGet version](https://badge.fury.io/nu/Pylypeiev.Extension.MinimalPack.svg)](https://badge.fury.io/nu/Pylypeiev.Extension.MinimalPack)
+
 ## [ Full Pack ](https://github.com/pylypeiev/CSharpExtensionMethods)  :eyes: 
+[![NuGet version](https://badge.fury.io/nu/Pylypeiev.Extension.svg)](https://badge.fury.io/nu/Pylypeiev.Extension)
 
 ## Table of Contents:
 #### Collections extension methods
