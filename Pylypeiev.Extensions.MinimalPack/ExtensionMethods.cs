@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Globalization;
 using System.IO;
 using System.Linq;
@@ -10,6 +11,7 @@ using System.Text.RegularExpressions;
 
 namespace Pylypeiev.Extensions.MinimalPack
 {
+    [DebuggerStepThrough]
     public static class ExtensionMethods
     {
         /// <summary>
@@ -20,6 +22,7 @@ namespace Pylypeiev.Extensions.MinimalPack
         /// index is less than the lower bound of array. -or- length is less than zero. -or-
         /// The sum of index and length is greater than the size of array.
         /// </exception>
+        [DebuggerStepThrough]
         public static void ClearAll<T>(this T[] arr)
         {
             if (arr != null)
@@ -40,6 +43,7 @@ namespace Pylypeiev.Extensions.MinimalPack
         /// A string that consists of the elements of values delimited by the separator string.
         /// If values is an empty array, the method returns System.String.Empty.
         /// </returns>
+        [DebuggerStepThrough]
         public static string Join<T>(this T[] array, string separator)
         {
             if (array == null)
@@ -53,6 +57,7 @@ namespace Pylypeiev.Extensions.MinimalPack
         /// <summary> Returns a simple string representation of an array.</summary>
         /// <param name="arr">The source array.</param>
         /// <returns>The <see cref="string"/> representation of the array in format [1, 2, 3] and [] if it is null</returns>
+        [DebuggerStepThrough]
         public static string ToArrayString<T>(this T[] arr)
         {
             if (arr == null)
@@ -82,6 +87,7 @@ namespace Pylypeiev.Extensions.MinimalPack
         /// <summary> Returns a simple string representation of a jagged array.</summary>
         /// <param name="arr">The source array.</param>
         /// <returns>String representation of the array. in format [1, 2, 3] and [] if it is null</returns>
+        [DebuggerStepThrough]
         public static string ToArrayString<T>(this T[][] arr)
         {
             if (arr == null)
@@ -127,6 +133,7 @@ namespace Pylypeiev.Extensions.MinimalPack
         /// <summary>Returns a simple string representation of a 2D array.</summary>
         /// <param name="arr">The source array.</param>
         /// <returns>The <see cref="string"/> representation of the array in format [[1,2],[3,4]] and [] if it is null</returns>
+        [DebuggerStepThrough]
         public static string ToArrayString<T>(this T[,] arr)
         {
             if (arr == null)
@@ -176,6 +183,7 @@ namespace Pylypeiev.Extensions.MinimalPack
         /// <param name="value"> The object to use as a value </param>
         /// <exception cref="System.ArgumentNullException">key is null</exception>
         /// <returns> True if added to dictionary, otherwise, false. </returns>
+        [DebuggerStepThrough]
         public static bool AddIfNotContainsKey<TKey, TValue>(this IDictionary<TKey, TValue> dict, TKey key, TValue value)
         {
             if (dict?.ContainsKey(key) == false)
@@ -193,6 +201,7 @@ namespace Pylypeiev.Extensions.MinimalPack
         /// <exception cref="System.ArgumentNullException">key is null</exception>
         /// <exception cref="System.NotSupportedException">dictionary is read only</exception>
         /// <returns> Element on dictionary on provided key. </returns>
+        [DebuggerStepThrough]
         public static TValue AddOrUpdate<TKey, TValue>(this IDictionary<TKey, TValue> dict, TKey key, TValue value)
         {
             if (dict == null || key == null)
@@ -216,6 +225,7 @@ namespace Pylypeiev.Extensions.MinimalPack
         /// Convert this dictionary to list of Tuples, where item1 is key and item2 is a value from this dictionary
         /// </summary>
         /// <returns>List with tuples</returns>
+        [DebuggerStepThrough]
         public static List<Tuple<TKey, TValue>> ToTuple<TKey, TValue>(this Dictionary<TKey, TValue> dict)
         {
             if (dict == null || dict.Count == 0)
@@ -238,6 +248,7 @@ namespace Pylypeiev.Extensions.MinimalPack
         /// <param name="key"> The object to use as a key </param>
         /// <param name="defaultValue"> TValue that will be returned if key is not exist</param>
         /// <returns>  Get an element with provided key if this key is exist, otherwise default value </returns>
+        [DebuggerStepThrough]
         public static TValue GetValueOrDefault<TKey, TValue>(this IDictionary<TKey, TValue> dict, TKey key, TValue defaultValue)
         {
             if (dict.TryGetValue(key, out TValue value))
@@ -252,6 +263,7 @@ namespace Pylypeiev.Extensions.MinimalPack
         /// <param name="value"> The object to add</param>
         /// <exception cref="System.NotSupportedException">collection is read only</exception>
         /// <returns> True if added to collection, otherwise, false. </returns>
+        [DebuggerStepThrough]
         public static bool AddIfNotContains<T>(this ICollection<T> collection, T value)
         {
             if (collection?.Contains(value) == false)
@@ -265,6 +277,7 @@ namespace Pylypeiev.Extensions.MinimalPack
         /// <summary> Adds the elements of the specified Array to the end of the collection </summary>
         /// <param name="values">values</param>
         /// <exception cref="System.NotSupportedException">collection is read only</exception>
+        [DebuggerStepThrough]
         public static void AddRange<T>(this ICollection<T> collection, params T[] values)
         {
             if (collection != null && values != null)
@@ -279,6 +292,7 @@ namespace Pylypeiev.Extensions.MinimalPack
         /// <summary>Adds the elements of the specified IEnumerable to the end of the collection</summary>
         /// <param name="values">values</param>
         /// <exception cref="System.NotSupportedException">collection is read only</exception>
+        [DebuggerStepThrough]
         public static void AddRange<T>(this ICollection<T> collection, IEnumerable values)
         {
             if (collection != null && values != null)
@@ -292,6 +306,7 @@ namespace Pylypeiev.Extensions.MinimalPack
 
         /// <summary> Check if collection is null or empty </summary>
         /// <returns>true if collection is not null and not empty, otherwise - false</returns>
+        [DebuggerStepThrough]
         public static bool IsNullOrEmpty<T>(this ICollection<T> collection)
         {
             return collection == null || collection.Count == 0;
@@ -300,6 +315,7 @@ namespace Pylypeiev.Extensions.MinimalPack
         /// <summary>Removes a range of elements from collection</summary>
         /// <param name="values">values</param>
         /// <exception cref="System.NotSupportedException">collection is read only</exception>
+        [DebuggerStepThrough]
         public static void RemoveRange<T>(this ICollection<T> collection, params T[] values)
         {
             if (collection != null && values != null)
@@ -314,6 +330,7 @@ namespace Pylypeiev.Extensions.MinimalPack
         /// <summary>Removes a range of elements from collection</summary>
         /// <param name="values">values</param>
         /// <exception cref="System.NotSupportedException">collection is read only</exception>
+        [DebuggerStepThrough]
         public static void RemoveRange<T>(this ICollection<T> collection, IEnumerable values)
         {
             if (collection != null && values != null)
@@ -328,6 +345,7 @@ namespace Pylypeiev.Extensions.MinimalPack
         /// <summary> Add the object top the end of IEnumerable </summary>
         /// <param name="element">object to append</param>
         /// <returns>updated IEnumerable</returns>
+        [DebuggerStepThrough]
         public static IEnumerable<T> Append<T>(this IEnumerable<T> source, T element)
         {
             foreach (var item in source)
@@ -341,6 +359,7 @@ namespace Pylypeiev.Extensions.MinimalPack
         /// <summary> Check if all elements in IEnumerable are equals </summary>
         /// <exception cref="System.ArgumentNullException">enumerable is null</exception>
         /// <returns>true if they are equals, otherwise - false</returns>
+        [DebuggerStepThrough]
         public static bool AreAllSame<T>(this IEnumerable<T> enumerable)
         {
             if (enumerable == null)
@@ -373,6 +392,7 @@ namespace Pylypeiev.Extensions.MinimalPack
         /// </summary>
         /// <param name="enumerable"></param>
         /// <returns>concatenated string</returns>
+        [DebuggerStepThrough]
         public static string Concatenate(this IEnumerable<string> enumerable)
         {
             var sb = new StringBuilder();
@@ -393,6 +413,7 @@ namespace Pylypeiev.Extensions.MinimalPack
         /// <exception cref="System.ArgumentNullException">action is null</exception>
         /// <exception cref="System.InvalidOperationException">An element in the collection has been modified</exception>
         /// <returns>this IEnuerable</returns>
+        [DebuggerStepThrough]
         public static IEnumerable<T> ForEach<T>(this IEnumerable<T> collection, Action<T> action)
         {
             if (collection != null)
@@ -409,6 +430,7 @@ namespace Pylypeiev.Extensions.MinimalPack
         /// <summary> Check if IEnumerable is empty </summary>
         /// <exception cref="System.ArgumentNullException">IEnumerable is null</exception>
         /// <returns>true if collection is empty, otherwise - false</returns>
+        [DebuggerStepThrough]
         public static bool IsEmpty<T>(this IEnumerable<T> enumerable)
         {
             return !enumerable.Any();
@@ -417,6 +439,7 @@ namespace Pylypeiev.Extensions.MinimalPack
         /// <summary> Check if IEnumerable is <strong>NOT</strong> empty </summary>
         /// <exception cref="System.ArgumentNullException">IEnumerable is null</exception>
         /// <returns>true if collection is not empty, otherwise - false</returns>
+        [DebuggerStepThrough]
         public static bool IsNotEmpty<T>(this IEnumerable<T> enumerable)
         {
             return enumerable.Any();
@@ -424,6 +447,7 @@ namespace Pylypeiev.Extensions.MinimalPack
 
         /// <summary> Check if IEnumerable is null or empty </summary>
         /// <returns>true if IEnumerable is null or empty, otherwise - false</returns>
+        [DebuggerStepThrough]
         public static bool IsNullOrEmpty<T>(this IEnumerable<T> enumerable)
         {
             return enumerable?.Any() != true;
@@ -441,6 +465,7 @@ namespace Pylypeiev.Extensions.MinimalPack
         /// A string that consists of the elements of values delimited by the separator string.
         /// If values is an empty IEnumerable, the method returns String.Empty.
         /// </returns>
+        [DebuggerStepThrough]
         public static string Join<T>(this IEnumerable<T> source, string separator)
         {
             if (source == null)
@@ -454,6 +479,7 @@ namespace Pylypeiev.Extensions.MinimalPack
         /// <summary> Add the object at the beginning of IEnumerable </summary>
         /// <param name="element">object to prepend</param>
         /// <returns>updated IEnumerable</returns>
+        [DebuggerStepThrough]
         public static IEnumerable<T> Prepend<T>(this IEnumerable<T> source, T element)
         {
             yield return element;
@@ -465,6 +491,7 @@ namespace Pylypeiev.Extensions.MinimalPack
 
         /// <summary> Shuffle IEnumerable </summary>
         /// <returns> a random shuffled IEnumerable or empty collection if source is null</returns>
+        [DebuggerStepThrough]
         public static IEnumerable<T> Shuffle<T>(this IEnumerable<T> source)
         {
             if (source == null)
@@ -477,6 +504,7 @@ namespace Pylypeiev.Extensions.MinimalPack
 
         /// <summary>Pick a random element from IEnumerable</summary>
         /// <returns> 1 random element of type T, ot default T if collection is null </returns>
+        [DebuggerStepThrough]
         public static T PickRandom<T>(this IEnumerable<T> source)
         {
             if (source == null)
@@ -490,6 +518,7 @@ namespace Pylypeiev.Extensions.MinimalPack
         /// <summary>Pick N random elements from IEnumerable</summary>
         /// <param name="count">number of objects of type T to pick</param>
         /// <returns> IEnumerable collecting N random element of type T, or empty enumerable if collection is null </returns>
+        [DebuggerStepThrough]
         public static IEnumerable<T> PickRandom<T>(this IEnumerable<T> source, int count)
         {
             if (source == null)
@@ -502,6 +531,7 @@ namespace Pylypeiev.Extensions.MinimalPack
 
         /// <summary>Safe foreach and more, returns an empty Enumerable if source is null. </summary>
         /// <returns> Source if not null, otherwise Enumerable.Empty </returns>
+        [DebuggerStepThrough]
         public static IEnumerable<T> ThisOrEmpty<T>(this IEnumerable<T> enumerable)
         {
             return enumerable ?? Enumerable.Empty<T>();
@@ -510,6 +540,7 @@ namespace Pylypeiev.Extensions.MinimalPack
         /// <summary> Chunk a list to smaller lists with a maximum capacity of the chunk size</summary>
         /// <param name="chunkSize"> a maximum capacity of the chunk size</param>
         /// <returns>List with chunked lists</returns>
+        [DebuggerStepThrough]
         public static List<List<T>> ChunkBy<T>(this List<T> source, int chunkSize)
         {
             if (source == null)
@@ -526,6 +557,7 @@ namespace Pylypeiev.Extensions.MinimalPack
 
         /// <summary>Clone an collection to new IList</summary>
         /// <returns>cloned new IList</returns>
+        [DebuggerStepThrough]
         public static IList<T> Clone<T>(this IList<T> list) where T : ICloneable
         {
             if (list == null)
@@ -546,6 +578,7 @@ namespace Pylypeiev.Extensions.MinimalPack
         /// <param name="item"> The object to add</param>
         /// <exception cref="System.NotSupportedException">collection is read only</exception>
         /// <returns>this collection</returns>
+        [DebuggerStepThrough]
         public static TList Push<TList, TItem>(this TList list, TItem item) where TList : IList<TItem>
         {
             if (list == null)
@@ -561,6 +594,7 @@ namespace Pylypeiev.Extensions.MinimalPack
         /// Converts an byte array to its equivalent string representation that is encoded with base-64.
         /// </summary>
         /// <returns> base64 string representation, if array is empty - returns empty string </returns>
+        [DebuggerStepThrough]
         public static string ToBase64String(this byte[] arr)
         {
             if (arr == null || arr.Length == 0)
@@ -576,6 +610,7 @@ namespace Pylypeiev.Extensions.MinimalPack
         /// </summary>
         /// <param name="compareTo">The char to compare to</param>
         /// <returns>true if have same value, otherwise - false</returns>
+        [DebuggerStepThrough]
         public static bool EqualsIgnoreCase(this char ch, char compareTo)
         {
             return char.ToUpperInvariant(ch) == char.ToUpperInvariant(compareTo);
@@ -585,6 +620,7 @@ namespace Pylypeiev.Extensions.MinimalPack
         /// Get the innermost exception from this exception
         /// </summary>
         /// <returns>innermost exception</returns>
+        [DebuggerStepThrough]
         public static Exception GetInnermostException(this Exception ex)
         {
             var innerMostException = ex;
@@ -600,6 +636,7 @@ namespace Pylypeiev.Extensions.MinimalPack
         /// Get list of inner exceptions from this exception
         /// </summary>
         /// <returns>IEnumerable of inner exceptions from this exceptions</returns>
+        [DebuggerStepThrough]
         public static IEnumerable<Exception> GetInnerExceptions(this Exception ex)
         {
             var innerEx = ex.InnerException;
@@ -612,6 +649,7 @@ namespace Pylypeiev.Extensions.MinimalPack
 
         /// <summary>Perform action on the object if it not null</summary>
         /// <param name="action">action to perform</param>
+        [DebuggerStepThrough]
         public static void IfNotNull<T>(this T obj, Action<T> action) where T : class
         {
             if (obj != null)
@@ -623,6 +661,7 @@ namespace Pylypeiev.Extensions.MinimalPack
         /// <summary>Perform function on the object if it not null</summary>
         /// <param name="func">function to perform</param>
         /// <returns>return function result or default value of the object if it is null</returns>
+        [DebuggerStepThrough]
         public static TResult IfNotNull<T, TResult>(this T obj, Func<T, TResult> func) where T : class
         {
             return obj != null ? func(obj) : default;
@@ -632,6 +671,7 @@ namespace Pylypeiev.Extensions.MinimalPack
         /// <param name="func">function to perform</param>
         /// <param name="defaultValue">default value if object is null</param>
         /// <returns>return function result or default value of the object if it is null</returns>
+        [DebuggerStepThrough]
         public static TResult IfNotNull<T, TResult>(this T obj, Func<T, TResult> func, TResult defaultValue) where T : class
         {
             return obj != null ? func(obj) : defaultValue;
@@ -641,6 +681,7 @@ namespace Pylypeiev.Extensions.MinimalPack
         /// <param name="sequence"></param>
         /// <exception cref="System.ArgumentNullException">object is null</exception>
         /// <returns>true if object is contained in sequence, otherwise - false</returns>
+        [DebuggerStepThrough]
         public static bool IsIn<T>(this T obj, params T[] sequence)
         {
             if (obj == null)
@@ -653,6 +694,7 @@ namespace Pylypeiev.Extensions.MinimalPack
 
         /// <summary>Check if object is NOT null</summary>
         /// <returns>true if object is not null, otherwise - false</returns>
+        [DebuggerStepThrough]
         public static bool IsNotNull<T>(this T obj) where T : class
         {
             return obj != null;
@@ -660,6 +702,7 @@ namespace Pylypeiev.Extensions.MinimalPack
 
         /// <summary>Check if object is null</summary>
         /// <returns>true if object is null, otherwise - false</returns>
+        [DebuggerStepThrough]
         public static bool IsNull<T>(this T obj) where T : class
         {
             return obj == null;
@@ -667,6 +710,7 @@ namespace Pylypeiev.Extensions.MinimalPack
 
         /// <summary>like ToString of the object, but not crushes if the object is null</summary>
         /// <returns>ToString of the object, if the object is null - empty string</returns>
+        [DebuggerStepThrough]
         public static string ToStringSafe(this object str)
         {
             return str == null ? "" : str.ToString();
@@ -677,6 +721,7 @@ namespace Pylypeiev.Extensions.MinimalPack
         /// </summary>
         /// <param name="tryFunction">function to try to perform</param>
         /// <returns>result of the function or a default value if not succeed </returns>
+        [DebuggerStepThrough]
         public static TResult Try<TType, TResult>(this TType obj, Func<TType, TResult> tryFunction)
         {
             try
@@ -695,6 +740,7 @@ namespace Pylypeiev.Extensions.MinimalPack
         /// <param name="tryFunction">function to try to perform</param>
         /// <param name="catchValue">value to return if not succeed</param>
         /// <returns>result of the function or a catchValue if not succeed </returns>
+        [DebuggerStepThrough]
         public static TResult Try<TType, TResult>(this TType obj, Func<TType, TResult> tryFunction, TResult catchValue)
         {
             try
@@ -711,6 +757,7 @@ namespace Pylypeiev.Extensions.MinimalPack
         /// <param name="tryFunction">function to try to perform</param>
         /// <param name="result">result of try function</param>
         /// <returns>return true if the function succeeded and result accordingly, otherwise - false and default value of result</returns>
+        [DebuggerStepThrough]
         public static bool Try<TType, TResult>(this TType obj, Func<TType, TResult> tryFunction, out TResult result)
         {
             try
@@ -730,6 +777,7 @@ namespace Pylypeiev.Extensions.MinimalPack
         /// <param name="catchValue">value to return if not succeed</param>
         /// <param name="result">result of try function</param>
         /// <returns>return true if the function succeeded and result accordingly, otherwise - false and catchValue</returns>
+        [DebuggerStepThrough]
         public static bool Try<TType, TResult>(this TType obj, Func<TType, TResult> tryFunction, TResult catchValue, out TResult result)
         {
             try
@@ -747,6 +795,7 @@ namespace Pylypeiev.Extensions.MinimalPack
         /// <summary>try to perform an action on the object</summary>
         /// <param name="tryAction">action to try to perform</param>
         /// <returns>true if the action succeeded, otherwise - false</returns>
+        [DebuggerStepThrough]
         public static bool Try<TType>(this TType obj, Action<TType> tryAction)
         {
             try
@@ -764,6 +813,7 @@ namespace Pylypeiev.Extensions.MinimalPack
         /// <param name="tryAction">action to try to perform</param>
         /// <param name="catchAction">action to perform if first action not succeeded </param>
         /// <returns>true if first action succeeded, otherwise - false</returns>
+        [DebuggerStepThrough]
         public static bool Try<TType>(this TType obj, Action<TType> tryAction, Action<TType> catchAction)
         {
             try
@@ -781,6 +831,7 @@ namespace Pylypeiev.Extensions.MinimalPack
         /// <summary>Wraps this object instance into an IEnumerable, consisting of a single item.</summary>
         /// <param name="item"> The instance that will be wrapped.</param>
         /// <returns> An IEnumerable of a single item. </returns>
+        [DebuggerStepThrough]
         public static IEnumerable<T> Yield<T>(this T item)
         {
             yield return item;
@@ -789,6 +840,7 @@ namespace Pylypeiev.Extensions.MinimalPack
         /// <summary>Deep copy of object using BinaryFormatter</summary>
         /// <param name="source"> An object to copy</param>
         /// <returns> An deep copy of object of type T</returns>
+        [DebuggerStepThrough]
         public static T DeepCopy<T>(this T source)
         {
             using (var ms = new MemoryStream())
@@ -802,6 +854,7 @@ namespace Pylypeiev.Extensions.MinimalPack
 
         /// <summary>Decodes a string encoded in base-64</summary>
         /// <returns>Decoded string, if string is empty/whitespace - empty string </returns>
+        [DebuggerStepThrough]
         public static string DecodeBase64(this string str)
         {
             if (string.IsNullOrWhiteSpace(str))
@@ -814,6 +867,7 @@ namespace Pylypeiev.Extensions.MinimalPack
 
         /// <summary>Encodes a string to its equivalent string representation that is encoded in base-64</summary>
         /// <returns> base64 string representation, if string is empty/whitespace - empty string </returns>
+        [DebuggerStepThrough]
         public static string EncodeBase64(this string str)
         {
             if (string.IsNullOrWhiteSpace(str))
@@ -826,6 +880,7 @@ namespace Pylypeiev.Extensions.MinimalPack
 
         /// <summary>Convert to DateTime</summary>
         /// <returns>DateTime if converting succeeded, otherwise - null</returns>
+        [DebuggerStepThrough]
         public static DateTime? ToDateTime(this string str)
         {
             if (DateTime.TryParse(str, out DateTime date))
@@ -839,6 +894,7 @@ namespace Pylypeiev.Extensions.MinimalPack
         /// <summary>Convert to DateTime</summary>
         /// <param name="defaultValue">DateTime that will be returned if converting will not succeed</param>
         /// <returns>DateTime if converting succeeded, otherwise - defaultValue</returns>
+        [DebuggerStepThrough]
         public static DateTime ToDateTime(this string str, DateTime defaultValue)
         {
             if (DateTime.TryParse(str, out DateTime date))
@@ -852,6 +908,7 @@ namespace Pylypeiev.Extensions.MinimalPack
         /// <summary>Convert to decimal</summary>
         /// <param name="defaultValue"></param>
         /// <returns>decimal if converting succeeded, otherwise - defaultValue</returns>
+        [DebuggerStepThrough]
         public static decimal ToDecimal(this string input, decimal defaultValue = 0)
         {
             if (!decimal.TryParse(input, out decimal result))
@@ -865,6 +922,7 @@ namespace Pylypeiev.Extensions.MinimalPack
         /// <summary>Convert to double</summary>
         /// <param name="defaultValue"></param>
         /// <returns>double if converting succeeded, otherwise - defaultValue</returns>
+        [DebuggerStepThrough]
         public static double ToDouble(this string input, double defaultValue = 0)
         {
             if (!double.TryParse(input, out double result))
@@ -878,6 +936,7 @@ namespace Pylypeiev.Extensions.MinimalPack
         /// <summary>Convert to float</summary>
         /// <param name="defaultValue"></param>
         /// <returns>float if converting succeeded, otherwise - defaultValue</returns>
+        [DebuggerStepThrough]
         public static float ToFloat(this string input, float defaultValue = 0)
         {
             if (!float.TryParse(input, out float result))
@@ -891,6 +950,7 @@ namespace Pylypeiev.Extensions.MinimalPack
         /// <summary>Convert to int</summary>
         /// <param name="defaultValue"></param>
         /// <returns>int if converting succeeded, otherwise - defaultValue</returns>
+        [DebuggerStepThrough]
         public static int ToInt(this string input, int defaultValue = 0)
         {
             if (!int.TryParse(input, out int result))
@@ -904,6 +964,7 @@ namespace Pylypeiev.Extensions.MinimalPack
         /// <summary>Convert to long</summary>
         /// <param name="defaultValue"></param>
         /// <returns>long if converting succeeded, otherwise - defaultValue</returns>
+        [DebuggerStepThrough]
         public static long ToLong(this string input, long defaultValue = 0)
         {
             if (!long.TryParse(input, out long result))
@@ -918,6 +979,7 @@ namespace Pylypeiev.Extensions.MinimalPack
         /// <param name="str">A string to convert.</param>
         /// <param name="encoding">An encoding for conversion. Default is UTF8.</param>
         /// <returns>A byte array. If string is null or empty - empty byte array.</returns>
+        [DebuggerStepThrough]
         public static byte[] ToByteArray(this string str, Encoding encoding = null)
         {
             if (string.IsNullOrEmpty(str))
@@ -937,6 +999,7 @@ namespace Pylypeiev.Extensions.MinimalPack
         /// <param name="number">number of characters to remove</param>
         /// <exception cref="System.ArgumentOutOfRangeException">number is less than zero or greater than the length of this string</exception>
         /// <returns>substring</returns>
+        [DebuggerStepThrough]
         public static string RemoveFirst(this string str, int number)
         {
             if (string.IsNullOrEmpty(str))
@@ -949,6 +1012,7 @@ namespace Pylypeiev.Extensions.MinimalPack
 
         /// <summary>Remove the first character of this string </summary>
         /// <returns>substring without first character</returns>
+        [DebuggerStepThrough]
         public static string RemoveFirstCharacter(this string str)
         {
             if (string.IsNullOrEmpty(str))
@@ -963,6 +1027,7 @@ namespace Pylypeiev.Extensions.MinimalPack
         /// <param name="number">number of characters to remove</param>
         /// <exception cref="System.ArgumentOutOfRangeException">number is less than zero or greater than the length of this string</exception>
         /// <returns>substring</returns>
+        [DebuggerStepThrough]
         public static string RemoveLast(this string str, int number)
         {
             if (string.IsNullOrEmpty(str))
@@ -975,6 +1040,7 @@ namespace Pylypeiev.Extensions.MinimalPack
 
         /// <summary>Remove the last character of this string</summary>
         /// <returns>substring without last character</returns>
+        [DebuggerStepThrough]
         public static string RemoveLastCharacter(this string str)
         {
             if (string.IsNullOrEmpty(str))
@@ -987,6 +1053,7 @@ namespace Pylypeiev.Extensions.MinimalPack
 
         /// <summary>Reverse the sequence of characters in this string</summary>
         /// <returns> reversed string </returns>
+        [DebuggerStepThrough]
         public static string Reverse(this string str)
         {
             if (string.IsNullOrEmpty(str))
@@ -1002,6 +1069,7 @@ namespace Pylypeiev.Extensions.MinimalPack
         /// <summary>
         /// Surround this string with some string
         /// </summary>
+        [DebuggerStepThrough]
         public static string SurroundWith(this string str, string surrounder)
         {
             return surrounder + str + surrounder;
@@ -1012,6 +1080,7 @@ namespace Pylypeiev.Extensions.MinimalPack
         ///     start and end of the current string. If no characters can be trimmed from the
         ///     current instance, the method returns the current instance unchanged. If string is null - string.Empty returned
         ///</returns>
+        [DebuggerStepThrough]
         public static string TrimSafe(this string str)
         {
             if (string.IsNullOrWhiteSpace(str))
@@ -1023,6 +1092,7 @@ namespace Pylypeiev.Extensions.MinimalPack
         }
         /// <summary>Performs ToLower() only if input is not null</summary>
         /// <returns>The lowercase equivalent of the current string or string.Empty if input is null</returns>
+        [DebuggerStepThrough]
         public static string ToLowerSafe(this string input)
         {
             if (string.IsNullOrWhiteSpace(input))
@@ -1037,6 +1107,7 @@ namespace Pylypeiev.Extensions.MinimalPack
         /// <param name="culture">An object that supplies culture-specific casing rules.</param>
         /// <returns>  Returns a copy of this string converted to lowercase, using the casing rules
         //     of the specified culture  or string.Empty if input is null</returns>
+        [DebuggerStepThrough]
         public static string ToLowerSafe(this string input, CultureInfo culture)
         {
             if (string.IsNullOrWhiteSpace(input))
@@ -1051,6 +1122,7 @@ namespace Pylypeiev.Extensions.MinimalPack
         /// <param name="culture">An object that supplies culture-specific casing rules.</param>
         /// <returns>  Returns a copy of this string converted to lowercase, using the casing rules
         //     of the invariant culture or string.Empty if input is null</returns>
+        [DebuggerStepThrough]
         public static string ToLowerInvariantSafe(this string input)
         {
             if (string.IsNullOrWhiteSpace(input))
@@ -1063,6 +1135,7 @@ namespace Pylypeiev.Extensions.MinimalPack
 
         /// <summary>Performs ToUpper() only if input is not null</summary>
         /// <returns>The uppercase equivalent of the current string  or string.Empty if input is null</returns>
+        [DebuggerStepThrough]
         public static string ToUpperSafe(this string input)
         {
             if (string.IsNullOrWhiteSpace(input))
@@ -1077,6 +1150,7 @@ namespace Pylypeiev.Extensions.MinimalPack
         /// <param name="culture">An object that supplies culture-specific casing rules.</param>
         /// <returns>  Returns a copy of this string converted to uppercase, using the casing rules
         //     of the specified culture. or string.Empty if input is null</returns>
+        [DebuggerStepThrough]
         public static string ToUpperSafe(this string input, CultureInfo culture)
         {
             if (string.IsNullOrWhiteSpace(input))
@@ -1091,6 +1165,7 @@ namespace Pylypeiev.Extensions.MinimalPack
         /// <param name="culture">An object that supplies culture-specific casing rules.</param>
         /// <returns>  Returns a copy of this string converted to uppercase, using the casing rules
         //     of the invariant culture or string.Empty if input is null</returns>
+        [DebuggerStepThrough]
         public static string ToUpperInvariantSafe(this string input)
         {
             if (string.IsNullOrWhiteSpace(input))
@@ -1107,6 +1182,7 @@ namespace Pylypeiev.Extensions.MinimalPack
         /// </summary>
         /// <param name="b">The string to compare to</param>
         /// <returns>true if matches, otherwise - false, if some of the strings are null - false</returns>
+        [DebuggerStepThrough]
         public static bool EndsWithIgnoreCase(this string a, string b)
         {
             if (a == null || b == null)
@@ -1123,6 +1199,7 @@ namespace Pylypeiev.Extensions.MinimalPack
         /// </summary>
         /// <param name="b">The string to compare to</param>
         /// <returns>true if have same value, otherwise - false</returns>
+        [DebuggerStepThrough]
         public static bool EqualsIgnoreCase(this string a, string b)
         {
             return string.Equals(a, b, StringComparison.OrdinalIgnoreCase);
@@ -1133,6 +1210,7 @@ namespace Pylypeiev.Extensions.MinimalPack
         /// </summary>
         /// <param name="nullAlternateValue">alternative value if the string is null</param>
         /// <returns>the string if its not null or whitespace, otherwise alternative value</returns>
+        [DebuggerStepThrough]
         public static string IfNullThen(this string input, string nullAlternateValue)
         {
             return (!string.IsNullOrWhiteSpace(input)) ? input : nullAlternateValue;
@@ -1140,6 +1218,7 @@ namespace Pylypeiev.Extensions.MinimalPack
 
         /// <summary>Indicates whether this string is null or an empty string</summary>
         /// <returns>true if the string is null or an empty string,otherwise, false.</returns>
+        [DebuggerStepThrough]
         public static bool IsNullOrEmpty(this string str)
         {
             return string.IsNullOrEmpty(str);
@@ -1147,6 +1226,7 @@ namespace Pylypeiev.Extensions.MinimalPack
 
         /// <summary>Indicates whether this string is null, empty, or consists only of white-space characters</summary>
         /// <returns>true if the string is null or String.Empty, or if value consists exclusively of white-space characters</returns>
+        [DebuggerStepThrough]
         public static bool IsNullOrWhiteSpace(this string str)
         {
             return string.IsNullOrWhiteSpace(str);
@@ -1158,6 +1238,7 @@ namespace Pylypeiev.Extensions.MinimalPack
         /// <param name="match">string to seek</param>
         /// <param name="occurrenceNum">occurrence number when to return an index</param>
         /// <returns>index, or -1 if not matches</returns>
+        [DebuggerStepThrough]
         public static int NthIndexOf(this string str, string match, int occurrenceNum)
         {
             if (string.IsNullOrEmpty(str) || string.IsNullOrEmpty(match))
@@ -1187,6 +1268,7 @@ namespace Pylypeiev.Extensions.MinimalPack
         /// <exception cref="RegexMatchTimeoutException">
         /// The exception that is thrown when the execution time of a regular expression pattern-matching method exceeds its time-out interval.
         /// </exception>
+        [DebuggerStepThrough]
         public static int OccurrenceNum(this string str, string match, TimeSpan? matchTimeout = null)
         {
             if (string.IsNullOrEmpty(str) || string.IsNullOrEmpty(match))
@@ -1207,6 +1289,7 @@ namespace Pylypeiev.Extensions.MinimalPack
         /// </summary>
         /// <param name="b">The string to compare to</param>
         /// <returns>true if matches, otherwise - false, if some of the strings are null - false</returns>
+        [DebuggerStepThrough]
         public static bool StartsWithIgnoreCase(this string a, string b)
         {
             if (a == null || b == null)
@@ -1221,6 +1304,7 @@ namespace Pylypeiev.Extensions.MinimalPack
         /// <param name="value"> The string to seek</param>
         /// <param name="stringComparison">One of the enumeration values that determines how this string and value are compared.</param>
         /// <returns>true if the value parameter occurs within this string, otherwise - false.</returns>
+        [DebuggerStepThrough]
         public static bool ContainsInvariantSafe(this string str, string value, StringComparison stringComparison = StringComparison.InvariantCultureIgnoreCase)
         {
             if (str == null || value == null)
@@ -1230,5 +1314,24 @@ namespace Pylypeiev.Extensions.MinimalPack
 
             return str.IndexOf(value, stringComparison) >= 0;
         }
+
+        /// <summary>convert date to UNIX Epoch time format</summary>
+        /// <returns>number of milliseconds (including fractions) in UTC between the specified date and midnight January 1, 1970.</returns>
+        [DebuggerStepThrough]
+        public static double ToUnixTime(this DateTime localTime)
+        {
+            var epoch = new DateTime(1970, 1, 1, 0, 0, 0, DateTimeKind.Utc);
+            return localTime.ToUniversalTime()
+                            .Subtract(epoch)
+                            .TotalMilliseconds;
+        }
+
+        /// <summary>
+        /// Trims the time components so that the precision of the resulting
+        /// time is to the day
+        /// </summary>
+        /// <returns>new DateTime with precision of the time is to the day</returns>
+        [DebuggerStepThrough] 
+        public static DateTime TrimToDay(this DateTime time) => time.Date;
     }
 }

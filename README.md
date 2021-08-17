@@ -22,6 +22,7 @@ Minimal Pack
 
 #### POCO extension methods
 - [ByteArray](#byte)
+- [DateTime](#datetime)
 - [object](#object)
 - [string](#string)
 - [char](#char)
@@ -79,6 +80,12 @@ Minimal Pack
 
 ### ByteArray extension methods:
 - [ToBase64String](https://github.com/pylypeiev/CSharpExtensionMethods/blob/master/Pylypeiev.Extensions/Objects%20Extensions/ByteArray/ByteArrayExtensions.cs) - Converts an byte array to its equivalent string representation that is encoded with base-64.
+
+<a name="datetime"></a>
+
+### DateTime extension methods:
+- [ToUnixTime](https://github.com/pylypeiev/CSharpExtensionMethods/blob/master/Pylypeiev.Extensions/Objects%20Extensions/DateTime/DateTimeExtensions.cs) - convert date to UNIX Epoch time format
+- [TrimToDay](https://github.com/pylypeiev/CSharpExtensionMethods/blob/master/Pylypeiev.Extensions/Objects%20Extensions/DateTime/DateTimeExtensions.cs) - Trims the time components so that the precision of the resulting time is to the day
 
 ### object extension methods:
 - [IfNotNull](https://github.com/pylypeiev/CSharpExtensionMethods/blob/master/Pylypeiev.Extensions/Objects%20Extensions/Object/ObjectGeneralExtensions.cs) - Perform action/function on the object if it not null 
